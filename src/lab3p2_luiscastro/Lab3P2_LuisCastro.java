@@ -34,6 +34,7 @@ static Scanner leerS = new Scanner(System.in);
         while(opcion != 7){
             switch(opcion){
                 case 1:
+                    System.out.println("Agregar Pokemon.");
                     System.out.println("Ingrese que tipo de Pokemon desea ingresar: ");
                     System.out.println("1. Fire Type.");
                     System.out.println("2. Water Type.");
@@ -78,7 +79,7 @@ static Scanner leerS = new Scanner(System.in);
                         }else{
                             vivir = false;
                         }
-                        System.out.println("Ingrese la velocidad en que puede nadar en el agua: (numero entero)");
+                        System.out.println("Ingrese la velocidad en que puede nadar en el agua (numero entero):");
                         int velocidad = leer.nextInt();
                         WaterType water = new WaterType(vivir, velocidad, nombre, num_pokedex, naturaleza, false);
                         pokemon.add(water);
@@ -92,11 +93,52 @@ static Scanner leerS = new Scanner(System.in);
                             dominio = leer.nextInt();
                         }
                         GrassType grass = new GrassType(habitat, dominio, nombre, num_pokedex, naturaleza,false);
-                    }
-                    
+                        pokemon.add(grass);
+                    } 
                     break;
                 case 2:
+                    System.out.println("Agregar Pokebola.");
+                    System.out.println("Ingrese el color de la Pokebola:");
+                    String color = leerS.nextLine();
+                    System.out.println("Ingrese el numero de serie de la Pokebola:");
+                    int num_serie = leer.nextInt();
+                    boolean igual = false;
+                    if(pokeballs.isEmpty()){
+                        igual = false;
+                    }else{
+                        for (int i = 0; i < pokeballs.size(); i++) {
+                            if(pokeballs.get(i).getNum_serie()== num_serie){
+                                igual = true;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    while(igual == true){
+                        int cont = 0;
+                        System.out.println("El numero de serie ya existe. Ingrese de nuevo:");
+                        num_serie = leer.nextInt();
+                        for (int i = 0; i < pokeballs.size(); i++) {
+                            if(pokeballs.get(i).getNum_serie()== num_serie){
+                                igual = true;
+                                cont++;
+                                break;
+                            }
+                            if (cont == 0){
+                                igual = false;
+                            }
+                        }
+                    }
+                    System.out.println("Ingrese el numero de eficiencia de la Pokebola (1-3): ");
+                    int eficiencia = leer.nextInt();
+                    while(eficiencia > 3 || eficiencia < 1){
+                        System.out.println("Eficiencia invalida! Ingrese de nuevo:");
+                        eficiencia = leer.nextInt();
+                    }
+                    Pokeball pokeball = new Pokeball(color, num_serie, eficiencia);
+                    pokeballs.add(pokeball);
                     break;
+
                 case 3:
                     break;
                 case 4:
