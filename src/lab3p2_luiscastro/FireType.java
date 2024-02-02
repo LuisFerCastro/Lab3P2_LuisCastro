@@ -11,7 +11,7 @@ package lab3p2_luiscastro;
 public class FireType extends Pokemon {
    private int potencia_llamas;
 
-    public FireType(int potencia_llamas, String nombre, int num_pokedex, String naturaleza, boolean atrapado, Pokeball poke) {
+    public FireType(int potencia_llamas, String nombre, int num_pokedex, String naturaleza, boolean atrapado) {
         super(nombre, num_pokedex, naturaleza, atrapado);
         this.potencia_llamas = potencia_llamas;
     }

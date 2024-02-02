@@ -50,6 +50,49 @@ static Scanner leerS = new Scanner(System.in);
                     System.out.println("Ingrese el numero de entrada en la Pokedex del Pokemon: ");
                     int num_pokedex = leer.nextInt();
                     
+                    System.out.println("Ingrese la naturaleza del Pokemon: Timido/Energetico/Misterioso");
+                    String naturaleza = leerS.nextLine();
+                    
+                    while(!naturaleza.equalsIgnoreCase("Timido") && !naturaleza.equalsIgnoreCase("Energetico")&& !naturaleza.equalsIgnoreCase("Misterioso")){
+                        System.out.println("Naturaleza no valida! ");
+                        System.out.println("Ingrese la naturaleza del Pokemon: Timido/Energetico/Misterioso");
+                        naturaleza = leerS.nextLine();
+                    }
+                    if(opcionPok == 1){
+                        System.out.println("Ingrese la potencia de llamas del Pokemon (numero entero): ");
+                        int potencia_llamas = leer.nextInt();
+                        FireType fuego = new FireType(potencia_llamas, nombre, num_pokedex, naturaleza, false);
+                        pokemon.add(fuego);
+                    }else if (opcionPok == 2){
+                        System.out.println("El Pokemon puede vivir fuera del agua?");
+                        System.out.println("1. Si.");
+                        System.out.println("2. No.");
+                        int opcion_vivir = leer.nextInt();
+                        while(opcion_vivir > 2|| opcion_vivir < 1){
+                            System.out.println("Opcion invalida! Ingrese de nuevo.");
+                            opcion_vivir = leer.nextInt();
+                        }
+                        boolean vivir;
+                        if(opcion_vivir == 1){
+                            vivir = true;
+                        }else{
+                            vivir = false;
+                        }
+                        System.out.println("Ingrese la velocidad en que puede nadar en el agua: (numero entero)");
+                        int velocidad = leer.nextInt();
+                        WaterType water = new WaterType(vivir, velocidad, nombre, num_pokedex, naturaleza, false);
+                        pokemon.add(water);
+                    }else{
+                        System.out.println("Ingrese el habitat del Pokemon: ");
+                        String habitat = leerS.nextLine();
+                        System.out.println("Ingrese su dominio sobre las plantas (1-100): ");
+                        int dominio = leer.nextInt();
+                        while(dominio > 100 || dominio < 1){
+                            System.out.println("Dominio invalido! Ingrese de nuevo: ");
+                            dominio = leer.nextInt();
+                        }
+                        GrassType grass = new GrassType(habitat, dominio, nombre, num_pokedex, naturaleza,false);
+                    }
                     
                     break;
                 case 2:
