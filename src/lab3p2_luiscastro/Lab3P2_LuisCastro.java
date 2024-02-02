@@ -279,6 +279,55 @@ static Scanner leerS = new Scanner(System.in);
                             index_poke = leer.nextInt();
                         }
                         Random rand = new Random();
+                        int tam = pokemon.size();
+                        int indice_pokemon = rand.nextInt(pokemon.size());
+                        while(pokemon.get(indice_pokemon).isAtrapado() == true){
+                            indice_pokemon = rand.nextInt(pokemon.size());
+                        }
+                        System.out.println("EL POKEMON "+pokemon.get(indice_pokemon).getNombre()+" HA APARECIDO!");
+                        System.out.println("Que desea realizar?");
+                        System.out.println("1. Usar pokebola.");
+                        System.out.println("2. Huir.");
+                        System.out.println("Ingrese su opcion: ");
+                        int op_hacer = leer.nextInt();
+                        while(op_hacer > 2 || op_hacer < 0){
+                            System.out.println("Opcion invalida! Ingrese de nuevo: ");
+                            op_hacer = leer.nextInt();
+                        }
+                        if(op_hacer == 1){
+                            int efic = pokeballs.get(index_poke).getEficiencia();
+                            if(efic == 3){
+                                pokemon.get(indice_pokemon).setAtrapado(true);
+                                pokemon.get(indice_pokemon).setPoke(pokeballs.get(index_poke));
+                                pokeballs.remove(index_poke);
+                                System.out.println("El pokemon ha sido atrapado! La pokeball se ha usado.");
+                            }else if(efic == 2){
+                                int prob = rand.nextInt(3)+1;
+                                System.out.println(prob);
+                                if(prob == 1 || prob == 2){
+                                    System.out.println("El pokemon ha sido atrapado! La pokeball se ha usado.");
+                                    pokemon.get(indice_pokemon).setAtrapado(true);
+                                    pokemon.get(indice_pokemon).setPoke(pokeballs.get(index_poke));
+                                }else{
+                                    System.out.println("No se ha podido capturar el pokemon.");
+                                }
+                                pokeballs.remove(index_poke);
+                            }else{
+                                int prob2 = rand.nextInt(3)+1;
+                                System.out.println(prob2);
+                                if(prob2 == 1){
+                                    System.out.println("El pokemon ha sido atrapado! La pokeball se ha usado.");
+                                    pokemon.get(indice_pokemon).setAtrapado(true);
+                                    pokemon.get(indice_pokemon).setPoke(pokeballs.get(index_poke));
+                                }else{
+                                    System.out.println("No se ha podido capturar el pokemon.");
+                                }
+                                pokeballs.remove(index_poke);
+                            }
+                        }else{
+                            System.out.println("Ha huido. Regresando a menu.");
+                            break;
+                        }
                     }
                     break;
                 case 6:
