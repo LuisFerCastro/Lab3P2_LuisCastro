@@ -140,6 +140,27 @@ static Scanner leerS = new Scanner(System.in);
                     break;
 
                 case 3:
+                    if(pokemon.isEmpty()){
+                        System.out.println("No hay pokemones para listar!");
+                    }else{
+                        System.out.println("Lista de Pokemones: ");
+                        for (int i = 0; i < pokemon.size(); i++) {
+                            if(pokemon.get(i)instanceof FireType){
+                                System.out.println(pokemon.get(i));
+                            }
+                        }
+                        for (int i = 0; i < pokemon.size(); i++) {
+                            if(pokemon.get(i)instanceof WaterType){
+                                System.out.println(pokemon.get(i));
+                            }
+                        }
+                        for (int i = 0; i < pokemon.size(); i++) {
+                            if(pokemon.get(i)instanceof GrassType){
+                                System.out.println(pokemon.get(i));
+                            }
+                        }
+                    }
+                    System.out.println("");
                     break;
                 case 4:
                     break;
