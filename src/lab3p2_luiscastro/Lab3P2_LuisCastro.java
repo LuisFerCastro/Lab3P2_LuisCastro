@@ -66,6 +66,7 @@ static Scanner leerS = new Scanner(System.in);
                         pokemon.add(fuego);
                     }else if (opcionPok == 2){
                         System.out.println("El Pokemon puede vivir fuera del agua?");
+                        System.out.println("Ingrese el numero: ");
                         System.out.println("1. Si.");
                         System.out.println("2. No.");
                         int opcion_vivir = leer.nextInt();
@@ -163,6 +164,55 @@ static Scanner leerS = new Scanner(System.in);
                     System.out.println("");
                     break;
                 case 4:
+                    if(pokemon.isEmpty()){
+                        System.out.println("No hay pokemon en la lista!");
+                    }else{
+                        System.out.println("Ingrese el tipo de pokemon que desea eliminar: ");
+                        System.out.println("1. Fire Type.");
+                        System.out.println("2. Water Type.");
+                        System.out.println("3. Grass Type.");
+                        System.out.println("Ingrese su opcion:");
+                        int opcion_elim = leer.nextInt();
+                        while(opcion_elim > 3||opcion_elim < 0){
+                            System.out.println("Opcion invalida! Ingrese de nuevo: ");
+                            opcion_elim = leer.nextInt();
+                        }
+                        for (int i = 0; i < pokemon.size(); i++) {
+                            System.out.println(i+". "+pokemon.get(i));
+                        }
+                        System.out.println("Ingrese el index que desea eliminar (0 en adelante): ");
+                        int index_elim = leer.nextInt();
+                        while(index_elim < 0 || index_elim >= pokemon.size()){
+                            System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                            index_elim = leer.nextInt();
+                        }
+                        while(opcion_elim == 1 && pokemon.get(index_elim)instanceof GrassType|| opcion_elim == 1 && pokemon.get(index_elim)instanceof WaterType){
+                            System.out.println("El pokemon escojido no es un fire type! Ingrese de nuevo: ");
+                            index_elim = leer.nextInt();
+                            while(index_elim < 0 || index_elim >= pokemon.size()){
+                            System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                            index_elim = leer.nextInt();
+                            }
+                        }
+                        while(opcion_elim == 2 && pokemon.get(index_elim)instanceof GrassType|| opcion_elim == 2 && pokemon.get(index_elim)instanceof FireType){
+                            System.out.println("El pokemon escojido no es un water type! Ingrese de nuevo: ");
+                            index_elim = leer.nextInt();
+                            while(index_elim < 0 || index_elim >= pokemon.size()){
+                            System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                            index_elim = leer.nextInt();
+                            }
+                        }
+                        while(opcion_elim == 3 && pokemon.get(index_elim)instanceof FireType|| opcion_elim == 3 && pokemon.get(index_elim)instanceof WaterType){
+                            System.out.println("El pokemon escojido no es un grass type! Ingrese de nuevo: ");
+                            index_elim = leer.nextInt();
+                            while(index_elim < 0 || index_elim >= pokemon.size()){
+                            System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                            index_elim = leer.nextInt();
+                            }
+                        }
+                        pokemon.remove(index_elim);
+                    }
+                    
                     break;
                 case 5:
                     break;
