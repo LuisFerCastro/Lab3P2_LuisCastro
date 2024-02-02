@@ -12,7 +12,7 @@ public class Pokemon {
     protected String nombre;
     protected int num_pokedex;
     protected String naturaleza;
-    protected boolean atrapado;
+    protected boolean atrapado = false;
     protected Pokeball poke;
 
     public Pokemon(String nombre, int num_pokedex, String naturaleza, boolean atrapado, Pokeball poke) {
