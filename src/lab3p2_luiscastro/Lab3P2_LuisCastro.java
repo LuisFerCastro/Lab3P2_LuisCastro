@@ -5,6 +5,7 @@
 package lab3p2_luiscastro;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -173,48 +174,112 @@ static Scanner leerS = new Scanner(System.in);
                         System.out.println("3. Grass Type.");
                         System.out.println("Ingrese su opcion:");
                         int opcion_elim = leer.nextInt();
+                        
                         while(opcion_elim > 3||opcion_elim < 0){
                             System.out.println("Opcion invalida! Ingrese de nuevo: ");
                             opcion_elim = leer.nextInt();
                         }
-                        for (int i = 0; i < pokemon.size(); i++) {
-                            System.out.println(i+". "+pokemon.get(i));
-                        }
-                        System.out.println("Ingrese el index que desea eliminar (0 en adelante): ");
-                        int index_elim = leer.nextInt();
-                        while(index_elim < 0 || index_elim >= pokemon.size()){
-                            System.out.println("Index fuera de rango! Ingrese de nuevo!");
-                            index_elim = leer.nextInt();
-                        }
-                        while(opcion_elim == 1 && pokemon.get(index_elim)instanceof GrassType|| opcion_elim == 1 && pokemon.get(index_elim)instanceof WaterType){
-                            System.out.println("El pokemon escojido no es un fire type! Ingrese de nuevo: ");
-                            index_elim = leer.nextInt();
-                            while(index_elim < 0 || index_elim >= pokemon.size()){
-                            System.out.println("Index fuera de rango! Ingrese de nuevo!");
-                            index_elim = leer.nextInt();
+                        if(opcion_elim == 1){
+                            int cont = 0;
+                            for (int i = 0; i < pokemon.size(); i++) {
+                                if(pokemon.get(i)instanceof FireType){
+                                    System.out.println(i+". "+pokemon.get(i));
+                                    cont++;
+                                }
                             }
-                        }
-                        while(opcion_elim == 2 && pokemon.get(index_elim)instanceof GrassType|| opcion_elim == 2 && pokemon.get(index_elim)instanceof FireType){
-                            System.out.println("El pokemon escojido no es un water type! Ingrese de nuevo: ");
-                            index_elim = leer.nextInt();
-                            while(index_elim < 0 || index_elim >= pokemon.size()){
-                            System.out.println("Index fuera de rango! Ingrese de nuevo!");
-                            index_elim = leer.nextInt();
+                            if(cont == 0){
+                                System.out.println("No se han encontrado pokemones tipo Fire, devolviendo al menu.");
+                                break;
                             }
-                        }
-                        while(opcion_elim == 3 && pokemon.get(index_elim)instanceof FireType|| opcion_elim == 3 && pokemon.get(index_elim)instanceof WaterType){
-                            System.out.println("El pokemon escojido no es un grass type! Ingrese de nuevo: ");
-                            index_elim = leer.nextInt();
+                            System.out.println("Ingrese el index que desea eliminar (0 en adelante): ");
+                            int index_elim = leer.nextInt();
                             while(index_elim < 0 || index_elim >= pokemon.size()){
-                            System.out.println("Index fuera de rango! Ingrese de nuevo!");
-                            index_elim = leer.nextInt();
+                                System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                                index_elim = leer.nextInt();
                             }
+                            while(pokemon.get(index_elim)instanceof GrassType||pokemon.get(index_elim)instanceof WaterType){
+                                System.out.println("El pokemon escojido no es un fire type! Ingrese de nuevo: ");
+                                index_elim = leer.nextInt();
+                                while(index_elim < 0 || index_elim >= pokemon.size()){
+                                System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                                index_elim = leer.nextInt();
+                                }
+                            }
+                            pokemon.remove(index_elim);
+                        }else if(opcion_elim == 2){
+                            int cont = 0;
+                            for (int i = 0; i < pokemon.size(); i++) {
+                                if(pokemon.get(i)instanceof WaterType){
+                                    System.out.println(i+". "+pokemon.get(i));
+                                    cont++;
+                                }
+                            }
+                            if(cont == 0){
+                                System.out.println("No se han encontrado pokemones tipo Water, devolviendo al menu.");
+                                break;
+                            }
+                            System.out.println("Ingrese el index que desea eliminar (0 en adelante): ");
+                            int index_elim = leer.nextInt();
+                            while(index_elim < 0 || index_elim >= pokemon.size()){
+                                System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                                index_elim = leer.nextInt();
+                            }
+                            while(pokemon.get(index_elim)instanceof GrassType||pokemon.get(index_elim)instanceof FireType){
+                                System.out.println("El pokemon escojido no es un water type! Ingrese de nuevo: ");
+                                index_elim = leer.nextInt();
+                                while(index_elim < 0 || index_elim >= pokemon.size()){
+                                System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                                index_elim = leer.nextInt();
+                                }
+                            }
+                            pokemon.remove(index_elim);
+                        }else{
+                            int cont = 0;
+                           for (int i = 0; i < pokemon.size(); i++) {
+                                if(pokemon.get(i)instanceof GrassType){
+                                    System.out.println(i+". "+pokemon.get(i));
+                                    cont++;
+                                }
+                            } 
+                           if(cont==0){
+                               System.out.println("No se han encontrado pokemones tipo Grass, devolviendo al menu.");
+                               break;
+                           }
+                           System.out.println("Ingrese el index que desea eliminar (0 en adelante): ");
+                            int index_elim = leer.nextInt();
+                            while(index_elim < 0 || index_elim >= pokemon.size()){
+                                System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                                index_elim = leer.nextInt();
+                            }
+                            while(pokemon.get(index_elim)instanceof WaterType||pokemon.get(index_elim)instanceof FireType){
+                                System.out.println("El pokemon escojido no es un grass type! Ingrese de nuevo: ");
+                                index_elim = leer.nextInt();
+                                while(index_elim < 0 || index_elim >= pokemon.size()){
+                                System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                                index_elim = leer.nextInt();
+                                }
+                            }
+                            pokemon.remove(index_elim);
                         }
-                        pokemon.remove(index_elim);
                     }
                     
                     break;
                 case 5:
+                    if(pokeballs.isEmpty()||pokemon.isEmpty()){
+                        System.out.println("La lista de pokebolas o la lista de pokemons esta vacia! No se puede realizar esta operacion!");
+                    }else{
+                        System.out.println("Lista de pokebolas: ");
+                        for (int i = 0; i < pokeballs.size(); i++) {
+                            System.out.println(i+". "+pokeballs.get(i));
+                        }
+                        System.out.println("Escoja la pokebola que desea (0 en adelante): ");
+                        int index_poke = leer.nextInt();
+                        while(index_poke < 0|| index_poke >= pokeballs.size()){
+                            System.out.println("Index fuera de rango! Ingrese de nuevo:");
+                            index_poke = leer.nextInt();
+                        }
+                        Random rand = new Random();
+                    }
                     break;
                 case 6:
                     break;
