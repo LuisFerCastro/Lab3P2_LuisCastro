@@ -34,6 +34,23 @@ static Scanner leerS = new Scanner(System.in);
         while(opcion != 7){
             switch(opcion){
                 case 1:
+                    System.out.println("Ingrese que tipo de Pokemon desea ingresar: ");
+                    System.out.println("1. Fire Type.");
+                    System.out.println("2. Water Type.");
+                    System.out.println("3. Grass Type.");
+                    System.out.println("Ingrese su opcion: ");
+                    int opcionPok = leer.nextInt();
+                    while(opcionPok > 3 || opcionPok < 1){
+                        System.out.println("Opcion invalida! Ingrese de nuevo.");
+                        opcionPok = leer.nextInt();
+                    }
+                    System.out.println("Ingrese el nombre del Pokemon: ");
+                    String nombre = leerS.nextLine();
+                    
+                    System.out.println("Ingrese el numero de entrada en la Pokedex del Pokemon: ");
+                    int num_pokedex = leer.nextInt();
+                    
+                    
                     break;
                 case 2:
                     break;

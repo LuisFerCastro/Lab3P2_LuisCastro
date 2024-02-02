@@ -12,7 +12,7 @@ public class FireType extends Pokemon {
    private int potencia_llamas;
 
     public FireType(int potencia_llamas, String nombre, int num_pokedex, String naturaleza, boolean atrapado, Pokeball poke) {
-        super(nombre, num_pokedex, naturaleza, atrapado, poke);
+        super(nombre, num_pokedex, naturaleza, atrapado);
         this.potencia_llamas = potencia_llamas;
     }
 

@@ -15,13 +15,17 @@ public class Pokemon {
     protected boolean atrapado = false;
     protected Pokeball poke;
 
-    public Pokemon(String nombre, int num_pokedex, String naturaleza, boolean atrapado, Pokeball poke) {
+    public Pokemon(String nombre, int num_pokedex, String naturaleza, boolean atrapado) {
         this.nombre = nombre;
         this.num_pokedex = num_pokedex;
         this.naturaleza = naturaleza;
         this.atrapado = atrapado;
+    }
+
+    public Pokemon(Pokeball poke) {
         this.poke = poke;
     }
+    
 
     public String getNombre() {
         return nombre;
