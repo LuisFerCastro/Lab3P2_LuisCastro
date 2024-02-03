@@ -45,7 +45,7 @@ public class Pokeball {
 
     @Override
     public String toString() {
-        return "Pokeball{" + "color=" + color + ", num_serie=" + num_serie + ", eficiencia=" + eficiencia + '}';
+        return "Pokeball: " + "Color = " + color + ", Num_serie = " + num_serie + ", Eficiencia = " + eficiencia;
     }
     
     

@@ -279,7 +279,6 @@ static Scanner leerS = new Scanner(System.in);
                             index_poke = leer.nextInt();
                         }
                         Random rand = new Random();
-                        int tam = pokemon.size();
                         int indice_pokemon = rand.nextInt(pokemon.size());
                         while(pokemon.get(indice_pokemon).isAtrapado() == true){
                             indice_pokemon = rand.nextInt(pokemon.size());
@@ -331,6 +330,178 @@ static Scanner leerS = new Scanner(System.in);
                     }
                     break;
                 case 6:
+                    if(pokemon.isEmpty()){
+                        System.out.println("No hay pokemons para modificar!");
+                    }else{
+                        System.out.println("Escoja el tipo de pokemon que desea modificar: ");
+                        System.out.println("1. Fire Type.");
+                        System.out.println("2. Water Type.");
+                        System.out.println("3. Grass Type.");
+                        System.out.println("Ingrese su opcion: ");
+                        int opcion_pok = leer.nextInt();
+                        while(opcion_pok > 3 ||opcion_pok < 0){
+                            System.out.println("Opcion invalida! Ingrese de nuevo:");
+                            opcion_pok = leer.nextInt();
+                        }
+                        if(opcion_pok == 1){
+                            int cont = 0;
+                            for (int i = 0; i < pokemon.size(); i++) {
+                                if(pokemon.get(i)instanceof FireType && pokemon.get(i).isAtrapado()==true){
+                                    System.out.println(i+". "+pokemon.get(i));
+                                    cont++;
+                                }
+                            }
+                            if(cont == 0){
+                                System.out.println("No hay pokemon de tipo fuego a modificar.");
+                                break;
+                            }
+                            System.out.println("Ingrese el pokemon que desea modificar: ");
+                            int index_mod = leer.nextInt();
+                            while(index_mod < 0 || index_mod >= pokemon.size()){
+                                System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                                index_mod = leer.nextInt();
+                            }
+                            while(pokemon.get(index_mod)instanceof GrassType||pokemon.get(index_mod)instanceof WaterType||pokemon.get(index_mod).isAtrapado()==false){
+                                System.out.println("El pokemon escojido no es un fire type o no ha sido atrapado! Ingrese de nuevo: ");
+                                index_mod = leer.nextInt();
+                                while(index_mod< 0 || index_mod >= pokemon.size()){
+                                System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                                index_mod = leer.nextInt();
+                                }
+                            }
+                            System.out.println("Que desea modificar?");
+                            System.out.println("1. Nombre.");
+                            System.out.println("2. Numero de entrada en la pokedex.");
+                            System.out.println("3. Potencia de llamas.");
+                            int opcion_submenu1 = leer.nextInt();
+                            while(opcion_submenu1 > 3|| opcion_submenu1 < 0){
+                                System.out.println("Opcion invalida! Ingrese de nuevo:");
+                                opcion_submenu1 = leer.nextInt();
+                            }
+                            if(opcion_submenu1 == 1){
+                                System.out.println("Ingrese el nuevo nombre: ");
+                                String nuevo_nombre = leerS.nextLine();
+                                ((FireType)pokemon.get(index_mod)).setNombre(nuevo_nombre);    
+                            }else if(opcion_submenu1 == 2){
+                                System.out.println("Ingrese el nuevo numero: ");
+                                int nuevo_num = leer.nextInt();
+                                ((FireType)pokemon.get(index_mod)).setNum_pokedex(nuevo_num);
+                            }else{
+                                System.out.println("Ingrese la nueva potencia de llamas: ");
+                                int potencia = leer.nextInt();
+                                ((FireType)pokemon.get(index_mod)).setPotencia_llamas(potencia);
+                            }
+                        }else if(opcion_pok == 2){
+                           int cont = 0;
+                            for (int i = 0; i < pokemon.size(); i++) {
+                                if(pokemon.get(i)instanceof WaterType && pokemon.get(i).isAtrapado()==true){
+                                    System.out.println(i+". "+pokemon.get(i));
+                                    cont++;
+                                }
+                            }
+                            if(cont == 0){
+                                System.out.println("No hay pokemon de tipo agua a modificar.");
+                                break;
+                            } 
+                            System.out.println("Ingrese el pokemon que desea modificar: ");
+                            int index_mod = leer.nextInt();
+                            while(index_mod < 0 || index_mod >= pokemon.size()){
+                                System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                                index_mod = leer.nextInt();
+                            }
+                            while(pokemon.get(index_mod)instanceof GrassType||pokemon.get(index_mod)instanceof FireType||pokemon.get(index_mod).isAtrapado()==false){
+                                System.out.println("El pokemon escojido no es un water type o no ha sido atrapado! Ingrese de nuevo: ");
+                                index_mod = leer.nextInt();
+                                while(index_mod< 0 || index_mod >= pokemon.size()){
+                                System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                                index_mod = leer.nextInt();
+                                }
+                            }
+                            System.out.println("Que desea modificar?");
+                            System.out.println("1. Nombre.");
+                            System.out.println("2. Numero de entrada en la pokedex.");
+                            System.out.println("3. Puede vivir fuera del agua.");
+                            int opcion_submenu = leer.nextInt();
+                            while(opcion_submenu > 3|| opcion_submenu < 0){
+                                System.out.println("Opcion invalida! Ingrese de nuevo:");
+                                opcion_submenu = leer.nextInt();
+                            }
+                             if(opcion_submenu == 1){
+                                System.out.println("Ingrese el nuevo nombre: ");
+                                String nuevo_nombre = leerS.nextLine();
+                                ((WaterType)pokemon.get(index_mod)).setNombre(nuevo_nombre);    
+                            }else if(opcion_submenu == 2){
+                                System.out.println("Ingrese el nuevo numero: ");
+                                int nuevo_num = leer.nextInt();
+                                ((WaterType)pokemon.get(index_mod)).setNum_pokedex(nuevo_num);
+                            }else{
+                                System.out.println("Puede vivir en agua? ");
+                                System.out.println("Ingrese el numero: ");
+                                System.out.println("1. Si.");
+                                System.out.println("2. No.");
+                                int opcion_vivir = leer.nextInt();
+                                while(opcion_vivir > 2|| opcion_vivir < 1){
+                                    System.out.println("Opcion invalida! Ingrese de nuevo.");
+                                    opcion_vivir = leer.nextInt();
+                                }
+                                boolean vivir;
+                                if(opcion_vivir == 1){
+                                    vivir = true;
+                                }else{
+                                    vivir = false;
+                                }
+                                ((WaterType)pokemon.get(index_mod)).setFuera_agua(vivir);
+                            }
+                        }else{
+                            int cont = 0;
+                            for (int i = 0; i < pokemon.size(); i++) {
+                                if(pokemon.get(i)instanceof GrassType && pokemon.get(i).isAtrapado()==true){
+                                    System.out.println(i+". "+pokemon.get(i));
+                                    cont++;
+                                }
+                            }
+                            if(cont == 0){
+                                System.out.println("No hay pokemon de tipo grass a modificar.");
+                                break;
+                            } 
+                            System.out.println("Ingrese el pokemon que desea modificar: ");
+                            int index_mod = leer.nextInt();
+                            while(index_mod < 0 || index_mod >= pokemon.size()){
+                                System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                                index_mod = leer.nextInt();
+                            }
+                            while(pokemon.get(index_mod)instanceof WaterType||pokemon.get(index_mod)instanceof FireType||pokemon.get(index_mod).isAtrapado()==false){
+                                System.out.println("El pokemon escojido no es un grass type o no ha sido atrapado! Ingrese de nuevo: ");
+                                index_mod = leer.nextInt();
+                                while(index_mod< 0 || index_mod >= pokemon.size()){
+                                System.out.println("Index fuera de rango! Ingrese de nuevo!");
+                                index_mod = leer.nextInt();
+                                }
+                            }
+                            System.out.println("Que desea modificar?");
+                            System.out.println("1. Nombre.");
+                            System.out.println("2. Numero de entrada en la pokedex.");
+                            System.out.println("3. Habitat.");
+                            int opcion_submenu = leer.nextInt();
+                            while(opcion_submenu > 3|| opcion_submenu < 0){
+                                System.out.println("Opcion invalida! Ingrese de nuevo:");
+                                opcion_submenu = leer.nextInt();
+                            }
+                            if(opcion_submenu == 1){
+                                System.out.println("Ingrese el nuevo nombre: ");
+                                String nuevo_nombre = leerS.nextLine();
+                                ((GrassType)pokemon.get(index_mod)).setNombre(nuevo_nombre);    
+                            }else if(opcion_submenu == 2){
+                                System.out.println("Ingrese el nuevo numero: ");
+                                int nuevo_num = leer.nextInt();
+                                ((GrassType)pokemon.get(index_mod)).setNum_pokedex(nuevo_num);
+                            }else{
+                                System.out.println("Ingrese el nuevo habitat: ");
+                                String habitat_nuevo = leerS.nextLine();
+                                ((GrassType)pokemon.get(index_mod)).setHabitat(habitat_nuevo);
+                            }
+                        }   
+                    }
                     break;
             }//FIN SWITCH OPCION
             System.out.println("*****Menu*****");
